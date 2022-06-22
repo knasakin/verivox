@@ -19,7 +19,7 @@ with db.connect('base.db', check_same_thread=False) as connection:
     cursor.execute('INSERT INTO products (type, base_costs_per_month, consumption_costs) VALUES ("basic", 4, 22)')
     cursor.execute('INSERT INTO products (type, base_costs_per_month, consumption_costs) VALUES ("basic", 5, 25)')
     cursor.execute('INSERT INTO products (type, base_costs_per_month, consumption_costs) VALUES ("basic", 3, 20)')
-    # вношу в таблицу три записи тарифа basic
+    # вношу в таблицу три записи тарифа package
     cursor.execute("""INSERT INTO products (type, tariff_price, tariff_consumption, additional_costs)
                       VALUES ("package", 800, 4000, 30)""")
     cursor.execute("""INSERT INTO products (type, tariff_price, tariff_consumption, additional_costs)
