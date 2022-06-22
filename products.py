@@ -31,7 +31,7 @@ class PackagedTariff:  # Продукт пакетного тарифа
 def get_products():  # формирую список продуктов из БД
     objects = []
 
-    for obj in cursor.execute('SELECT * FROM products'):  # obj вида ('basic',
+    for obj in cursor.execute('SELECT * FROM products'):
         if 'basic' in obj:
             objects.append(BasicTariff(obj[1], obj[2]))
         elif 'package' in obj:
