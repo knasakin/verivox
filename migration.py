@@ -1,13 +1,14 @@
-import psycopg2
-from psycopg2 import Error
+from psycopg2 import Error, connect
+from config import user, password, host, port, database
+
 
 try:
     # подключаюсь к существующей БД
-    with psycopg2.connect(user="postgres",
-                          password="123",
-                          host="127.0.0.1",
-                          port="5432",
-                          database="postgres_db") as connection:
+    with connect(user=user,
+                 password=password,
+                 host=host,
+                 port=port,
+                 database=database) as connection:
 
         cursor = connection.cursor()
 
