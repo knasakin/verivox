@@ -1,14 +1,17 @@
 from psycopg2 import Error, connect
-from config import user, password, host, port, database
+from os import environ
 
 
 try:
+    user = environ.get('DB_USER')
+    password = environ.get('DB_PASS')
+
     # подключаюсь к существующей БД
     with connect(user=user,
                  password=password,
-                 host=host,
-                 port=port,
-                 database=database) as connection:
+                 host='127.0.0.1',
+                 port='5432',
+                 database='postgres_db') as connection:
 
         cursor = connection.cursor()
 
@@ -34,7 +37,8 @@ try:
         cursor.execute("""INSERT INTO products (type, tariff_price, tariff_consumption, additional_costs)
                                          VALUES ('package', 900, 4500, 23)""")
         cursor.execute("""INSERT INTO products (type, tariff_price, tariff_consumption, additional_costs)
-                                         VALUES ('package', 850, 5000, 27)""")
+                                         VALUES ('package', 850, 5500, 29)""")
+
         connection.commit()
         print('Изменения в таблицу успешно внесены')
 
