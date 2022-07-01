@@ -5,13 +5,16 @@ from os import environ
 try:
     user = environ.get('DB_USER')
     password = environ.get('DB_PASS')
+    host = environ.get('DB_HOST')
+    port = environ.get('DB_PORT')
+    database = environ.get('DB_NAME')
 
     # подключаюсь к существующей БД
     with connect(user=user,
                  password=password,
-                 host='127.0.0.1',
-                 port='5432',
-                 database='postgres_db') as connection:
+                 host=host,
+                 port=port,
+                 database=database) as connection:
 
         cursor = connection.cursor()
 
